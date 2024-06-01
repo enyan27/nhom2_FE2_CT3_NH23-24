@@ -9,11 +9,19 @@ export const Promo = () => {
                 <div className="flex items-center gap-x-2">
                     <Image
                         src="/unlimited.svg"
-                        height={26}
-                        width={26}
+                        height={45}
+                        width={45}
                         alt="Pro"
                     />
                     <h3 className="font-bold text-lg">Upgrade to Pro</h3>
+
+                    <Image
+                        src="/supper-bird.svg"
+                        height={70}
+                        width={70}
+                        alt="Super Bird"
+                        className="ml-auto -mb-6"
+                    />
                 </div>
                 <p className="text-muted-foreground">
                     Get unlimited hearts and more!
