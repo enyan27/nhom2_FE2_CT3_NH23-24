@@ -36,13 +36,13 @@ export const createStripeUrl = async () => {
             {
                 quantity: 1,
                 price_data: {
-                    currency: "CAD",
+                    currency: "VND",
                     product_data: {
                         name: "Duolingo Pro",
                         description: "Unlimited Hearts",
                     },
-                    // 4.99$ per month
-                    unit_amount: 499,
+                    // 49.000đ per month
+                    unit_amount: 49000,
                     recurring: {
                         interval: "month",
                     },

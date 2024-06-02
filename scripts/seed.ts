@@ -66,52 +66,16 @@ const main = async () => {
       },
       {
         id: 3,
-        unitId: 1, // Unit 1 (English)
-        order: 3,
-        title: "Verbs",
-      },
-      {
-        id: 4,
-        unitId: 1, // Unit 1 (English)
-        order: 4,
-        title: "Verbs",
-      },
-      {
-        id: 5,
-        unitId: 1, // Unit 1 (English)
-        order: 5,
-        title: "Verbs",
-      },
-      {
-        id: 6,
         unitId: 2, // Unit 1 (Japanese)
         order: 1,
         title: "Nouns",
       },
       {
-        id: 7,
+        id: 4,
         unitId: 2, // Unit 1 (Japanese)
         order: 2,
         title: "Verbs",
-      },
-      {
-        id: 8,
-        unitId: 2, // Unit 1 (Japanese)
-        order: 3,
-        title: "Nouns",
-      },
-      {
-        id: 9,
-        unitId: 2, // Unit 1 (Japanese)
-        order: 4,
-        title: "Nouns",
-      },
-      {
-        id: 10,
-        unitId: 2, // Unit 1 (Japanese)
-        order: 5,
-        title: "Nouns",
-      },
+      }
     ]);
 
     await db.insert(schema.challenges).values([
