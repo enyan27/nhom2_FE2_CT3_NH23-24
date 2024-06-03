@@ -27,7 +27,8 @@ const main = async () => {
     const courses = await db
       .insert(schema.courses)
       .values([
-        { title: "Spanish", imageSrc: "/es.svg" },
+        { title: "English", imageSrc: "/en.svg" },
+        { title: "Japanese", imageSrc: "/jp.svg" },
       ])
       .returning();
 
@@ -68,260 +69,515 @@ const main = async () => {
         for (const lesson of lessons) {
           const challenges = await db
             .insert(schema.challenges)
-            .values([
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the man"?',
-                order: 1,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the woman"?',
-                order: 2,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the boy"?',
-                order: 3,
-              },
-              {
-                lessonId: lesson.id,
-                type: "ASSIST",
-                question: '"the man"',
-                order: 4,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the zombie"?',
-                order: 5,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the robot"?',
-                order: 6,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the girl"?',
-                order: 7,
-              },
-              {
-                lessonId: lesson.id,
-                type: "ASSIST",
-                question: '"the zombie"',
-                order: 8,
-              },
-            ])
+            .values(
+              course.title === "English"
+                ? [
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "nhà ga"?',
+                      order: 1,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "bệnh viện"?',
+                      order: 2,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "quán cafe"?',
+                      order: 3,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "ASSIST",
+                      question: '"nhà ga"',
+                      order: 4,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "trà"?',
+                      order: 5,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "bánh kem"?',
+                      order: 6,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "tàu siêu tốc"?',
+                      order: 7,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "ASSIST",
+                      question: '"tàu siêu tốc"',
+                      order: 8,
+                    },
+                  ]
+                : [
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "nhà ga"?',
+                      order: 1,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "bệnh viện"?',
+                      order: 2,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "quán cafe"?',
+                      order: 3,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "ASSIST",
+                      question: '"nhà ga"',
+                      order: 4,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "trà"?',
+                      order: 5,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "bánh kem"?',
+                      order: 6,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "SELECT",
+                      question: 'Từ nào sau đây là "tàu siêu tốc"?',
+                      order: 7,
+                    },
+                    {
+                      lessonId: lesson.id,
+                      type: "ASSIST",
+                      question: '"tàu siêu tốc"',
+                      order: 8,
+                    },
+                  ]
+            )
             .returning();
 
           // For each challenge, insert challenge options
           for (const challenge of challenges) {
             if (challenge.order === 1) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "station",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/en_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "hospital",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "cafeteria",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/en_cafe.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "駅",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/jp_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "病院",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "喫茶店",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/jp_cafe.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 2) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "hospital",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "cafeteria",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/en_cafe.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "station",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/en_station.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "病院",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "喫茶店",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/jp_cafe.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "駅",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/jp_station.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 3) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "hospital",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "station",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/en_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "cafeteria",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/en_cafe.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "病院",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "駅",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/jp_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "喫茶店",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/jp_cafe.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 4) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el hombre",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "hospital",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "station",
+                        audioSrc: "/en_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "cafeteria",
+                        audioSrc: "/en_cafe.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "病院",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "駅",
+                        audioSrc: "/jp_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "喫茶店",
+                        audioSrc: "/jp_cafe.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 5) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "station",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/en_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "hospital",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "tea",
+                        imageSrc: "/tea.svg",
+                        audioSrc: "/en_tea.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "駅",
+                        imageSrc: "/station.svg",
+                        audioSrc: "/jp_station.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "病院",
+                        imageSrc: "/hospital.svg",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "お茶",
+                        imageSrc: "/tea.svg",
+                        audioSrc: "/jp_tea.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 6) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el robot",
-                  imageSrc: "/robot.svg",
-                  audioSrc: "/es_robot.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "cake",
+                        imageSrc: "/cake.svg",
+                        audioSrc: "/en_cake.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "tea",
+                        imageSrc: "/tea.svg",
+                        audioSrc: "/en_tea.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "cafeteria",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/en_cafe.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "ケーキ",
+                        imageSrc: "/cake.svg",
+                        audioSrc: "/jp_cake.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "お茶",
+                        imageSrc: "/tea.svg",
+                        audioSrc: "/jp_tea.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "喫茶店",
+                        imageSrc: "/cafe.svg",
+                        audioSrc: "/jp_cafe.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 7) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "la nina",
-                  imageSrc: "/girl.svg",
-                  audioSrc: "/es_girl.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "bullet train",
+                        imageSrc: "/bullet_train.svg",
+                        audioSrc: "/en_bullet_train.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "car",
+                        imageSrc: "/car.svg",
+                        audioSrc: "/en_car.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "walk",
+                        imageSrc: "/walk.svg",
+                        audioSrc: "/en_walk.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "新幹線",
+                        imageSrc: "/bullet_train.svg",
+                        audioSrc: "/jp_bullet_train.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "車",
+                        imageSrc: "/car.svg",
+                        audioSrc: "/jp_car.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "歩く",
+                        imageSrc: "/walk.svg",
+                        audioSrc: "/jp_walk.mp3",
+                      },
+                    ]
+              );
             }
 
             if (challenge.order === 8) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el zombie",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              await db.insert(schema.challengeOptions).values(
+                course.title === "English"
+                  ? [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "hospital",
+                        audioSrc: "/en_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "bullet train",
+                        audioSrc: "/en_bullet_train.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "car",
+                        audioSrc: "/en_car.mp3",
+                      },
+                    ]
+                  : [
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "病院",
+                        audioSrc: "/jp_hospital.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: true,
+                        text: "新幹線",
+                        audioSrc: "/jp_bullet_train.mp3",
+                      },
+                      {
+                        challengeId: challenge.id,
+                        correct: false,
+                        text: "車",
+                        audioSrc: "/jp_car.mp3",
+                      },
+                    ]
+              );
             }
           }
         }

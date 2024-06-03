@@ -25,6 +25,7 @@ export default function Home() {
           <ClerkLoading>
             <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
           </ClerkLoading>
+
           <ClerkLoaded>
             <SignedOut>
               <SignUpButton
@@ -36,6 +37,7 @@ export default function Home() {
                   Get Started
                 </Button>
               </SignUpButton>
+
               <SignInButton
                 mode="modal"
                 afterSignInUrl="/learn"
@@ -46,6 +48,7 @@ export default function Home() {
                 </Button>
               </SignInButton>
             </SignedOut>
+
             <SignedIn>
               <Button size="lg" variant="secondary" className="w-full" asChild>
                 <Link href="/learn">
@@ -53,7 +56,9 @@ export default function Home() {
                 </Link>
               </Button>
             </SignedIn>
+
           </ClerkLoaded>
+
         </div>
       </div>
     </div>

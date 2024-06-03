@@ -28,13 +28,13 @@ export const Card = ({
             )}
         >
             <div className="min-[24px] w-full flex items-center justify-end">
-                {active &&(
+                {active && (
                     <div className="rounded-md bg-green-600 flex items-center justify-center p-1.5">
-                        <Check className="text-white stroke-[4] h-4 w-4"/>
+                        <Check className="text-white stroke-[4] h-4 w-4" />
                     </div>
                 )}
             </div>
-            <Image 
+            <Image
                 src={imageSrc}
                 alt={title}
                 height={70}
