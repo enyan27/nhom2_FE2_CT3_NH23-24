@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { NotebookText } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image"
 
 type Props = {
     title: string;
@@ -20,15 +21,31 @@ export const UnitBanner = ({
                 </p>
             </div>
             <Link href="/lesson">
-                <Button 
+                <Button
                     size="lg"
                     variant="secondary"
                     className="hidden xl:flex border-2 border-b-4 active:border-b-2"
                 >
-                    <NotebookText className="mr-2"/>
+                    <NotebookText className="mr-2" />
                     Continue
                 </Button>
             </Link>
+
+            <Image
+                src="/gym.gif"
+                height={200}
+                width={200}
+                alt="logo"
+                className="absolute left-[0px] top-[250px]"
+            />
+
+            <Image
+                src="/patin.gif"
+                height={200}
+                width={200}
+                alt="logo"
+                className="absolute right-[50px] top-[450px]"
+            />
         </div>
     );
 };

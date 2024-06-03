@@ -52,14 +52,17 @@ export const Items = ({
         <ul className="w-full">
             <div className="flex items-center w-full p-4 gap-x-4 border-t-2">
                 <Image
-                    src="/heart.svg"
+                    src="/heart2.svg"
                     alt="Heart"
                     height={60}
                     width={60}
                 />
                 <div className="flex-1">
                     <p className="text-neutral-700 text-base lg:text-xl font-bold">
-                        Refill Hearts
+                        Hồi phục Trái tim
+                    </p>
+                    <p className="text-muted-foreground" style={{ maxWidth: '350px' }}>
+                        Lấp đầy trái tim để không phải lo lắng mắc lỗi sai trong bài học
                     </p>
                 </div>
                 <Button
@@ -81,7 +84,7 @@ export const Items = ({
                                     width={20}
                                 />
                                 <p>
-                                    {POINTS_TO_REFILL}
+                                    {POINTS_TO_REFILL} XP
                                 </p>
                             </div>
                         )
@@ -97,7 +100,10 @@ export const Items = ({
                 />
                 <div className="flex-1">
                     <p className="text-neutral-700 text-base lg:text-xl font-bold">
-                        Unlimited Hearts
+                        Trái tim vô hạn
+                    </p>
+                    <p className="text-muted-foreground" style={{ maxWidth: '350px' }}>
+                        Không bao giờ hết trái tim với Duolingo Pro!
                     </p>
                 </div>
                 <Button
@@ -105,7 +111,7 @@ export const Items = ({
                     disabled={pending}
                 >
                     {/* settings will take to customer portal of stripe */}
-                    {hasActiveSubscription ? "settings" : "upgrade"}
+                    {hasActiveSubscription ? "cài đặt" : "thử ngay"}
                 </Button>
             </div>
         </ul>

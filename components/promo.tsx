@@ -13,7 +13,7 @@ export const Promo = () => {
                         width={45}
                         alt="Pro"
                     />
-                    <h3 className="font-bold text-lg">Upgrade to Pro</h3>
+                    <h3 className="font-bold text-lg">Thử ngay Duolingo Pro</h3>
 
                     <Image
                         src="/supper-bird.svg"
@@ -23,13 +23,13 @@ export const Promo = () => {
                         className="ml-auto -mb-6"
                     />
                 </div>
-                <p className="text-muted-foreground">
-                    Get unlimited hearts and more!
+                <p className="text-muted-foreground" style={{ maxWidth: '300px' }}>
+                    Không quảng cáo, bài luyện tập cá nhân hóa, và không giới hạn số lần chinh phục Huyền thoại!
                 </p>
             </div>
             <Button asChild variant="super" className="w-full" size="lg">
                 <Link href="/shop">
-                    Upgrade Today
+                    Nâng cấp ngay
                 </Link>
             </Button>
         </div>

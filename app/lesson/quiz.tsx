@@ -174,23 +174,26 @@ export const Quiz = ({
                 />
                 <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
                     <Image
-                        src="/finish.svg"
+                        src="/finish.gif"
                         alt="finish"
                         className="hidden lg:block"
-                        height={100}
-                        width={100}
+                        height={250}
+                        width={250}
                     />
                     <Image
-                        src="/finish.svg"
+                        src="/finish.gif"
                         alt="finish"
                         className="block lg:hidden"
-                        height={50}
-                        width={50}
+                        height={125}
+                        width={125}
                     />
                     <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
                         Great Job! <br />
                         You have completed the lesson.
                     </h1>
+                    <p className="text-sm lg:text-base text-neutral-400">
+                        Bạn có thể luyện tập thêm hoặc chuyển sang bài tiếp theo.
+                    </p>
                     <div className="flex items-center gap-x-4 w-full">
                         <ResultCard
                             variant="points"

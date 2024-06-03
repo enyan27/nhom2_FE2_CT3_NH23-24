@@ -31,7 +31,7 @@ export const PracticeModal = () => {
                 <DialogHeader>
                     <div className="flex items-center w-full justify-center mb-5">
                         <Image
-                            src="/heart.svg"
+                            src="/heart2.svg"
                             alt="Heart"
                             height={100}
                             width={100}
@@ -41,7 +41,7 @@ export const PracticeModal = () => {
                         Practice Lesson
                     </DialogTitle>
                     <DialogDescription className="text-center text-base">
-                        Use Practice Lessons to regain hearts and points. You cannot loose points or hearts in practice lesson.
+                        Sử dụng các bài học luyện tập để khôi phục trái tim và điểm. Bạn không thể mất điểm hoặc trái tim trong các bài học luyện tập.
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="mb-4">
@@ -52,7 +52,7 @@ export const PracticeModal = () => {
                             size="lg"
                             onClick={close}
                         >
-                            I Understand
+                            Đã hiểu
                         </Button>
                     </div>
                 </DialogFooter>

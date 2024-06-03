@@ -36,7 +36,7 @@ export const Footer = ({
                 {status === "wrong" && (
                     <div className="text-rose-500 font-bold text-base lg:text-2xl flex items-center">
                         <XCircle className="h-6 w-6 lg:h-10 lg:w-10 mr-4" />
-                        Try Again.
+                        Oops! That's not correct. Try again.
                     </div>
                 )}
                 {status === "completed" && (
@@ -55,7 +55,7 @@ export const Footer = ({
                     size={isMobile ? "sm" : "lg"}
                     variant={status === "wrong" ? "danger" : "secondary"}
                 >
-                    {status === "none" && "Check"}
+                    {status === "none" && "Kiểm tra"}
                     {status === "correct" && "Next"}
                     {status === "wrong" && "Retry"}
                     {status === "completed" && "Continue"}

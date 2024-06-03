@@ -52,6 +52,7 @@ export const LessonButton = ({
     const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
     return (
+        
         <Link
             href={href}
             aria-disabled={locked}
@@ -76,7 +77,7 @@ export const LessonButton = ({
                             value={Number.isNaN(percentage) ? 0 : percentage}
                             styles={{
                                 path: {
-                                    stroke: "#4ade80",
+                                    stroke: "#58cc02",  // #4ade80 - green-500
                                 },
                                 trail: {
                                     stroke: "#e5e7eb"
@@ -88,12 +89,12 @@ export const LessonButton = ({
                                 variant={locked ? "locked" : "secondary"}
                                 className="h-[70px] w-[70px] border-b-8"
                             >
-                                <Icon 
+                                <Icon
                                     className={cn(
                                         'h-10 w-10',
-                                        locked 
-                                        ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
-                                        : "fill-primary-foreground text-primary-foreground",
+                                        locked
+                                            ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
+                                            : "fill-primary-foreground text-primary-foreground",
                                         isCompleted && "fill-none stroke-[4]"
                                     )}
                                 />
@@ -102,20 +103,20 @@ export const LessonButton = ({
                     </div>
                 ) : (
                     <Button
-                                size="rounded"
-                                variant={locked ? "locked" : "secondary"}
-                                className="h-[70px] w-[70px] border-b-8"
-                            >
-                                <Icon 
-                                    className={cn(
-                                        'h-10 w-10',
-                                        locked 
-                                        ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
-                                        : "fill-primary-foreground text-primary-foreground",
-                                        isCompleted && "fill-none stroke-[4]"
-                                    )}
-                                />
-                            </Button>
+                        size="rounded"
+                        variant={locked ? "locked" : "secondary"}
+                        className="h-[70px] w-[70px] border-b-8"
+                    >
+                        <Icon
+                            className={cn(
+                                'h-10 w-10',
+                                locked
+                                    ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
+                                    : "fill-primary-foreground text-primary-foreground",
+                                isCompleted && "fill-none stroke-[4]"
+                            )}
+                        />
+                    </Button>
                 )}
             </div>
         </Link>

@@ -45,10 +45,10 @@ export const HeartsModal = () => {
                         />
                     </div>
                     <DialogTitle className="text-center font-bold text-2xl">
-                        You ran out of hearts!
+                        Bạn đã dùng hết trái tim!
                     </DialogTitle>
                     <DialogDescription className="text-center text-base">
-                        Get Pro for unlimited hearts, or purchase them in the store.
+                        Nâng cấp lên Pro để có trái tim không giới hạn, hoặc mua chúng trong cửa hàng.
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="mb-4">

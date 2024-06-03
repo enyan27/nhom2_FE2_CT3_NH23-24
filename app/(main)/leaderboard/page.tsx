@@ -28,7 +28,20 @@ const LeaderboardPage = async () => {
         redirect("/courses");
     };
 
-    const isPro = !!userSubscription?.isActive
+    const isPro = !!userSubscription?.isActive;
+
+    const getTopImageSrc = (index: number) => {
+        switch (index) {
+            case 0:
+                return "/top_1.svg";
+            case 1:
+                return "/top_2.svg";
+            case 2:
+                return "/top_3.svg";
+            default:
+                return null;
+        }
+    };
 
     return (
         <div className="flex flex-row-reverse gap-[48px] px-6">
@@ -42,8 +55,8 @@ const LeaderboardPage = async () => {
                 {!isPro && (
                     <Promo />
                 )}
-                
-                <Quests points={userProgress.points}/>
+
+                <Quests points={userProgress.points} />
 
             </StickyWrapper>
             <FeedWrapper>
@@ -55,34 +68,47 @@ const LeaderboardPage = async () => {
                         width={90}
                     />
                     <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
-                        Leaderboard
+                        Bảng Xếp Hạng
                     </h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        See where you stand amongst your peers in the community.
+                        Vượt qua mọi người và trở thành người dẫn đầu!
                     </p>
                     <Separator className="mb-4 h-0.5 rounded-full" />
-                    {leaderboard.map((userProgress, index) => (
-                        <div
-                            key={userProgress.userId}
-                            className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
-                        >
-                            <p className="font-bold text-lime-700 mr-4 text-xl">{index + 1}</p>
-                            <Avatar
-                                className="border bg-green-500 h-12 w-12 ml-3 mr-6"
+                    {leaderboard.map((userProgress, index) => {
+                        const topImageSrc = getTopImageSrc(index);
+                        return (
+                            <div
+                                key={userProgress.userId}
+                                className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
                             >
-                                <AvatarImage
-                                    className="object-cover"
-                                    src={userProgress.userImageSrc}
-                                />
-                            </Avatar>
-                            <p className="font-bold text-neutral-800 flex-1">
-                                {userProgress.userName}
-                            </p>
-                            <p className="text-muted-foreground">
-                                {userProgress.points} XP
-                            </p>
-                        </div>
-                    ))}
+                                {topImageSrc ? (
+                                    <Image
+                                        src={topImageSrc}
+                                        alt={`Top ${index + 1}`}
+                                        height={32}
+                                        width={32}
+                                        className="mr-4"
+                                    />
+                                ) : (
+                                    <p className="font-bold text-lime-700 mr-4 text-xl">{index + 1}</p>
+                                )}
+                                <Avatar
+                                    className="border bg-green-500 h-12 w-12 ml-3 mr-6"
+                                >
+                                    <AvatarImage
+                                        className="object-cover"
+                                        src={userProgress.userImageSrc}
+                                    />
+                                </Avatar>
+                                <p className="font-bold text-neutral-800 flex-1">
+                                    {userProgress.userName}
+                                </p>
+                                <p className="text-muted-foreground">
+                                    {userProgress.points} XP
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </FeedWrapper>
         </div>
