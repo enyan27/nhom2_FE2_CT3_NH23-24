@@ -37,7 +37,7 @@ export const Header = () => {
                             afterSignUpUrl="/learn"
                         >
                             <Button className="lg" variant="ghost">
-                                Login
+                                Đăng nhập
                             </Button>
                         </SignInButton>
                     </SignedOut>

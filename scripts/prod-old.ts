@@ -49,12 +49,6 @@ const main = async () => {
             description: `Learn intermediate ${course.title}`,
             order: 2,
           },
-          {
-            courseId: course.id,
-            title: "Unit 3",
-            description: `Learn advanced ${course.title}`,
-            order: 3,
-          },
         ])
         .returning();
 

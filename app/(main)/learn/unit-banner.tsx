@@ -36,7 +36,15 @@ export const UnitBanner = ({
                 height={200}
                 width={200}
                 alt="logo"
-                className="absolute left-[0px] top-[250px]"
+                className="hidden lg:block absolute left-[0px] top-[250px]"
+            />
+
+            <Image
+                src="/gym.gif"
+                height={160}
+                width={160}
+                alt="logo"
+                className="block lg:hidden absolute left-[-20px] top-[270px]"
             />
 
             <Image
@@ -44,7 +52,15 @@ export const UnitBanner = ({
                 height={200}
                 width={200}
                 alt="logo"
-                className="absolute right-[50px] top-[450px]"
+                className="hidden lg:block absolute right-[50px] top-[450px] z-[-1]"
+            />
+
+            <Image
+                src="/patin.gif"
+                height={160}
+                width={160}
+                alt="logo"
+                className="block lg:hidden absolute right-[0px] top-[470px] z-[-1]"
             />
         </div>
     );
