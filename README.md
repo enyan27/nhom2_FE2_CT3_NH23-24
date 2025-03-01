@@ -1,6 +1,3 @@
-<p align="center"><strong>✨ Release Version ✨</strong></p>
-<p align="center"><strong>🔗 <a href="https://enyan27.vercel.app/" target="_blank">https://enyan27.vercel.app/</a></strong></p>
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
